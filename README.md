@@ -59,23 +59,23 @@ It is a framework that allows limited access to protected resources on the web. 
 
 - The Security Interceptor works with a preprocessing step and a postprocessing step.
 
-- In the preprocessing step, it looks to see whether the requested resource is secured with some metadata information (or ConfigAttribute). If it is not, the request is allowed to continue its way either to the requested URL or method.
+- In the **preprocessing step**, it looks to see whether the requested resource is secured with some metadata information (or ConfigAttribute). If it is not, the request is allowed to continue its way either to the requested URL or method.
 
-- If the requested resource is secured, the Security Interceptor retrieves the Authentication object from the current SecurityContext.
+- If the requested resource is secured, the Security Interceptor retrieves the **Authentication object** from the **current SecurityContext**.
 
-- If necessary, the Authentication object will be authenticated against the configured AuthenticationManager.
+- If necessary, the **Authentication** object will be authenticated against the configured **AuthenticationManager**.
 
 - After the object is authenticated, ***AccessDecisionManager*** is called to determine if the authenticated entity is able to finally access the resource. ***AccessDecisionManager*** throws an ***AccessDeniedException*** if the authenticated entity is not allowed to access the resource.
 
-- If ***AccessDecisionManager*** decides that the Authentication object is allowed to access the resource, the Authentication object is passed to RunAsManager if this is configured.
+- If ***AccessDecisionManager*** decides that the **Authentication object** is allowed to access the resource, the **Authentication object** is passed to **RunAsManager** if this is configured.
 
-- If ***RunAsManager*** is not configured, a no-op implementation is called. ***RunAsManager*** returns either null (if it’s not configured to be used) or a new Authentication object containing the same principal, credentials, and granted authorities as the original Authentication object, plus a new set of authorities. **This new Authentication object is put into the current SecurityContext.**
+- If ***RunAsManager*** is not configured, a no-op implementation is called. ***RunAsManager*** returns either null (if it’s not configured to be used) or a ***new Authentication object*** containing the **same principal, credentials, and granted authorities** as the original Authentication object, plus a new set of authorities. **This new Authentication object is put into the current SecurityContext.**
 
-- After this processing the Security Interceptor creates a new ***InterceptorStatusToken*** with information about the SecurityContext and the **ConfigAttributes**. This token will be used later in the postprocessing step of the Security Interceptor.
+- After this processing the Security Interceptor creates a new ***InterceptorStatusToken*** with information about the **SecurityContext** and the **ConfigAttributes**. This token will be used later in the postprocessing step of the Security Interceptor.
 
 - At this point, the Security Interceptor is ready to allow access to the secured resource, so it passes the invocation through and the particular secured entity (either a URL or a method) is invoked.
 
-- After the invocation returns, the second phase of the Security Interceptor comes into play, and the postprocessing begins. It involves only calling a ***AfterInvocationManager’s decide method*** if there is one configured.
+- After the invocation returns, the second phase of the Security Interceptor comes into play, and the **postprocessing** begins. It involves only calling a ***AfterInvocationManager’s decide method*** if there is one configured.
 
 - In its current implementation ***AfterInvocationManager*** delegates to instances of ***PostInvocationAuthorizationAdvice***, which ultimately can filter the returned objects or throw a ***AccessDeniedException*** if necessary. This is the case if you are using the postinvocation filters in method-level security.
 
@@ -89,7 +89,7 @@ It is a framework that allows limited access to protected resources on the web. 
 
 ### The filter chain
 
-- The filter chain model is what Spring Security uses to secure web applications. This model is built on top of the standard servlet filter functionality.
+- The **filter chain model** is what Spring Security uses to **secure web applications**. This model is built on top of the **standard servlet filter functionality**.
 
 - The filter chain in Spring Security preprocesses and postprocesses all the HTTP requests that are sent to the application and then applies security to URLs that require it.
 
