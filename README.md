@@ -81,11 +81,11 @@ It is a framework that allows limited access to protected resources on the web. 
 
 ### On a high level
 
-1. AbstractSecurityInterceptor calls getAttributes on SecurityMetadataSource.
-2. It then calls getAuthentication on SecurityContext
-3. Then it calls authenticate on AuthenticationManager
-4. Then it calls decide on AccessDecisionManager
-5. For post processing it calls decide on AfterInvocationManager.
+1. **AbstractSecurityInterceptor** calls **getAttributes** on **SecurityMetadataSource**.
+2. It then calls **getAuthentication** on **SecurityContext**
+3. Then it calls **authenticate** on **AuthenticationManager**
+4. Then it calls **decide** on **AccessDecisionManager**
+5. For post processing it calls **decide** on **AfterInvocationManager.**
 
 ### The filter chain
 
