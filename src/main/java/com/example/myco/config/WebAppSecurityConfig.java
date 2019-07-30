@@ -43,6 +43,8 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
         http
+                .cors()
+                .and()
                 .authorizeRequests()
                 .expressionHandler(webSecurityExpressionHandler())
                 .antMatchers("/rest/user/**").permitAll()
@@ -70,7 +72,8 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public RoleHierarchyImpl roleHierarchy() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
-        roleHierarchy.setHierarchy("ROLE_ADMIN > ROLE_ENGINEER > ROLE_OPERATOR > ROLE_VIEWER ");
+        roleHierarchy.setHierarchy(Role.getRoleHierarchy());
+                //"ROLE_ADMIN > ROLE_ENGINEER > ROLE_OPERATOR > ROLE_VIEWER "
         return roleHierarchy;
     }
 

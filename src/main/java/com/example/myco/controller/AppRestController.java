@@ -13,22 +13,22 @@ public class AppRestController {
 
     @GetMapping("/rest/admin/ep")
     public String adminEp() {
-        return "The user endpoint, accessible to Admin only ONLY";
+        return "The user endpoint, accessible to Admin ONLY";
     }
 
     @GetMapping("/rest/engineer/ep")
     public String enggEp() {
-        return "The user endpoint, accessible to engineer ONLY";
+        return "The user endpoint, accessible to engineer & above ONLY";
     }
 
     @GetMapping("/rest/operator/ep")
     public String opEp() {
-        return "The user endpoint, accessible to operator ONLY";
+        return "The user endpoint, accessible to operator & above ONLY";
     }
 
     @GetMapping("/rest/viewer/ep")
     public String viewEp() {
-        return "The user endpoint, accessible to viewer ONLY";
+        return "The user endpoint, accessible to viewer & above ONLY";
     }
 
     @GetMapping("/ws/ep")
