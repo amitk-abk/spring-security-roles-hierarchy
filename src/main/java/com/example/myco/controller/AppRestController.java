@@ -8,7 +8,7 @@ public class AppRestController {
 
     @GetMapping("/rest/user/ep")
     public String userEp() {
-        return "The user endpoint, accessible to all";
+        return "The user endpoint, accessible to all, without login as well";
     }
 
     @GetMapping("/rest/admin/ep")
@@ -33,7 +33,7 @@ public class AppRestController {
 
     @GetMapping("/ws/ep")
     public String wsEp() {
-        return "The user endpoint, accessible to engg, operator, viewer ONLY";
+        return "The user endpoint, accessible to any authenticated user";
     }
 
     @GetMapping("/getA")

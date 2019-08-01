@@ -19,18 +19,6 @@ public class SimpleUserDetails implements UserDetails {
     private boolean enabled = true;
     private Set<GrantedAuthority> authorities = new HashSet<GrantedAuthority>();
 
-    public SimpleUserDetails(String username, String password, Set<String> roles) {
-        this.username = username;
-        this.password = password;
-        this.enabled = true;
-
-        if (!CollectionUtils.isEmpty(roles)) {
-            for (String r : roles) {
-                authorities.add(new SimpleGrantedAuthority(role(r)));
-            }
-        }
-    }
-
     public SimpleUserDetails(String username, String password, String... authorities) {
         this.username = username;
         this.password = password;
@@ -73,10 +61,6 @@ public class SimpleUserDetails implements UserDetails {
     @Override
     public boolean isEnabled() {
         return this.enabled;
-    }
-
-    private String role(String role) {
-        return "ROLE_" + role;
     }
 
     private List<String> role(String... roles) {

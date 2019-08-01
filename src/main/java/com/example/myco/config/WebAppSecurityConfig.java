@@ -52,7 +52,7 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/rest/engineer/**").hasRole(Role.ENGINEER.name())
                 .antMatchers("/rest/operator/**").hasAnyRole(Role.OPERATOR.name())
                 .antMatchers("/rest/viewer/**").hasAnyRole(Role.VIEWER.name())
-                .antMatchers("/ws/**").hasAnyRole(Role.VIEWER.name());
+                .antMatchers("/ws/**").authenticated();
 
     }
 
@@ -73,7 +73,6 @@ public class WebAppSecurityConfig extends WebSecurityConfigurerAdapter {
     public RoleHierarchyImpl roleHierarchy() {
         RoleHierarchyImpl roleHierarchy = new RoleHierarchyImpl();
         roleHierarchy.setHierarchy(Role.getRoleHierarchy());
-                //"ROLE_ADMIN > ROLE_ENGINEER > ROLE_OPERATOR > ROLE_VIEWER "
         return roleHierarchy;
     }
 
